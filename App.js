@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, TextInput, StyleSheet } from "react-native";
+import { View, Text, Image, TextInput, StyleSheet, Button } from "react-native";
 import foto from "./방탄소년단onTwitter.png";
 import foto1 from "./💜.jpeg";
 import foto2 from "./36a790aa-182a-4e59-8bb3-5864f1711ddd.jpeg";
@@ -16,136 +16,129 @@ import home from "./assets/foto/h.png";
 import psaya from "./assets/foto/profilsaya.jpeg";
 import psaya2 from "./assets/foto/profilsaya2.jpeg";
 import chim from "./assets/foto/p3.jpeg";
-import { style } from "./style";
+import feed from "./assets/foto/feed.webp";
+import igtv from "./assets/foto/igtv.png";
+import tag from "./assets/foto/tag.png";
+import garis3 from "./assets/foto/garis3.png";
+import { style } from "./style_profil";
 
 const App = () => {
   return (
-    // <View style={{backgroundColor:'wheat'}}>
-    <View style={style.containerig}>
-      <Text>
-        <Teks />
-
-      </Text>
-      {/* <Text>Hello World</Text> */}
-
-      {/* <Text style={style.tulisanku}>Selamat Datang! </Text> */}
-      <Story/>
-      <StoryText/>
-      {/* <Text>
-        <Image source={foto34} style={{ width: 100, height: 100, borderRadius: 1000 }}></Image>
-        <Photo />
-        <Image source={foto34} style={{ width: 100, height: 100 }}></Image>
-        <Image source={foto35} style={{ width: 100, height: 100 }}></Image>
-        <Image source={foto1} style={{ width: 100, height: 100 }}></Image>
-        <Image source={foto2} style={{ width: 100, height: 100 }}></Image>
-        <Image source={foto3} style={{ width: 100, height: 100 }}></Image>
-      </Text> */}
-      {/* <Image source={{ uri: 'https://placeimg.com/100/100/people' }} style={{ width: 100, height: 100,resizeMode: 'repeat' }}></Image> */}
-      <Postingan/>
-      <Bawah />
+    <View style={style.container}>
+      <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
+        <View style={{ flex: 6, borderColor: 'white', justifyContent: 'center' }}>
+          <Text style={{ fontSize: 20, fontWeight:'bold' }}>asriputridga</Text>
+        </View>
+        <TampilanMenu simbol={upload} />
+        <TampilanMenu simbol={garis3} />
+      </View>
+      <View style={{ flex: 2, backgroundColor: 'white', flexDirection: 'row' }}>
+        <View style={style.viewGambar}>
+          <Image source={psaya} style={{ width: 80, height: 80, borderRadius: 80 / 2 }}></Image>
+        </View>
+        <CardProfil angka="100" keterangan="Postingan" />
+        <CardProfil angka="1.050" keterangan="Pengikut" />
+        <CardProfil angka="1" keterangan="Mengikuti" />
+      </View>
+      <View style={{ flex: 2, backgroundColor: 'white' }}>
+        <Text style={{ fontSize: 20 }}>Asri Putri Dwi Gita</Text>
+        <Text style={{fontSize: 15}}>Part of:</Text>
+        <Text style={style.textBio}>@RapMons</Text>
+        <Text style={style.textBio}>@fanbaseRM</Text>
+        <Text style={style.textBio}>@namu-ssi</Text>
+      </View>
+      <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
+        <View style={{ flex: 7, borderRightColor: 'white',marginRight:5 }}>
+          <Button title="Edit Profil" style={{borderRadius:5}}></Button>
+        </View>
+        <View style={{ flex: 1, borderRightColor: 'white'}}>
+          <Button title="v"></Button>
+        </View>
+      </View>
+      <View style={{ flex: 2, backgroundColor: 'white', flexDirection:'row' }}>
+        <Sorotan gambar={foto35} keterangan="💜"/>
+        <Sorotan gambar={foto2} keterangan="JOonie-speech"/>
+        <View style={{ flex: 1, borderColor: 'white' }}></View>
+        <View style={{ flex: 1, borderColor: 'white' }}></View>
+        {/* <Sorotan gambar={foto3} keterangan=""/>
+        <Sorotan gambar={foto3} keterangan=""/> */}
+      </View>
+      <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
+        {/* <NavBawah nav={feed} />
+        <NavBawah nav={igtv} />
+        <NavBawah nav={tag} /> */}
+        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+          <Image source={feed} style={{ height: 35, width: 35 }}></Image>
+        </View>
+        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+          <Image source={igtv} style={{ height: 25, width: 25 }}></Image>
+        </View>
+        <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+          <Image source={tag} style={{ height: 30, width: 30 }}></Image>
+        </View>
+      </View>
+      <View style={{ flex: 2, backgroundColor: 'white', flexDirection: 'row' }}>
+        <Feed ffeed={foto} />
+        <Feed ffeed={foto3} />
+        <Feed ffeed={foto34} />
+      </View>
+      <View style={{ flex: 1, backgroundColor: 'white', flexDirection: 'row' }}>
+        <NavBawah nav={home} />
+        <NavBawah nav={search} />
+        <NavBawah nav={reels} />
+        <NavBawah nav={shop} />
+        <NavBawahProfil nav={psaya} />
+      </View>
     </View>
   );
 }
 
-const Teks = () => {
+const TampilanMenu = (props) => {
   return (
-    <View>
-      <Text style={style.instagram}>Instagram                                <Image source={upload} style={style.gambarpanel}></Image> <Image source={suka} style={style.gambarpanel}></Image> <Image source={pesan} style={style.gambarpanel}></Image></Text>
+    <View style={style.viewGambar}>
+      <Image source={props.simbol} style={style.gambar}></Image>
     </View>
-  );
+  )
 }
 
-const Bawah = () => {
+const CardProfil = (props) => {
   return (
-      <Text>            <Image source={home} style={{width:20, height:20, padding:50, margin:50}}></Image>            <Image source={search} style={{width:20, height:20, padding:50, margin:50}}></Image>            <Image source={reels} style={{width:15, height:15, padding:50, margin:50}}></Image>            <Image source={shop} style={{width:15, height:15, padding:50, margin:50}}></Image>            <Image source={psaya} style={{width:25, height:25, padding:50, margin:50}}></Image>
-        </Text>
-  );
-}
-
-const Story =() => {
-  return(
-    <Text><Image source={psaya} style={{width:80, height:80}}></Image><Image source={psaya} style={{width:80, height:80}}></Image><Image source={chim} style={{width:80, height:80}}></Image><Image source={psaya} style={{width:80, height:80}}></Image>
-    </Text>
-  );
-}
-
-const StoryText =() => {
-  return(
-    <Text>   Cerita Anda       namu-ssi            nchim                  RM
-    </Text>
-  );
-}
-
-const Postingan = () => {
-  return(
-    <View>
-    <Text style={{marginBottom:15, marginTop:15}}><Image source={psaya} style={{width:25, height:25}}></Image>asriputridga</Text>
-    <Image source={foto} style={{width:330, height:250}}></Image>
-    <Text style={{padding:5}}><Image source={suka} style={style.gambarpanel}></Image></Text>
-    <Text style={{fontWeight:"bold", marginTop:10}}>11.363 suka</Text>
-    <Text style={{fontWeight:"bold", marginTop:10}}>asriputridga</Text>
-    <Text style={{marginTop:10}}>이 다음 가사 음
-뭐라고 쓸까 음
-너무 많은 말이 날 돌지만
-내 마음 같은 게 하나 없어
-그냥 느껴져 해가 뜨고 나면 꼭 달이 뜨듯이
-손톱이 자라듯, 겨울이 오면
-나무들이 한 올 한 올 옷을 벗듯이
-넌 나의 기억을 추억으로 바꿀 사람
-사람을 사랑으로 만들 사람
-널 알기 전
-내 심장은 온통 직선뿐이던 거야
-난 그냥 사람, 사람, 사람
-넌 나의 모든 모서릴 잠식
-나를 사랑, 사랑, 사랑
-으로 만들어 만들어
-우린 사람, 사람, 사람
-저 무수히 많은 직선들 속
-내 사랑, 사랑, 사랑
-그 위에 살짝 앉음 하트가 돼</Text>
+    <View style={style.viewGambar}>
+      <Text style={style.textProfil}>{props.angka}</Text>
+      <Text style={style.keteranganProfil}>{props.keterangan}</Text>
     </View>
-  );
+  )
 }
-const Photo = () => {
+
+const Sorotan = (props) => {
   return (
-    <Image source={foto} style={{ width: 100, height: 100 }}></Image>
-  );
+    <View style={style.viewGambar}>
+      <Image source={props.gambar} style={style.gambarProfil}></Image>
+      <Text>{props.keterangan}</Text>
+    </View>
+  )
 }
 
-const Tampilan = () => {
+const Feed = (props) => {
   return (
-    <View style={{ width: 100, height: 100, backgroundColor: 'green' }} />
-  );
+    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      <Image source={props.ffeed} style={{ height: 110, width: 110, margin: 5 }}></Image>
+    </View>
+  )
 }
 
-class Tulisan extends Component {
-  render() {
-    return (
-      <Text>Tampilan Dari KOmponen Class</Text>
-    );
-  }
+const NavBawah = (props) => {
+  return (
+    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      <Image source={props.nav} style={{ height: 25, width: 25 }}></Image>
+    </View>
+  )
 }
-
-class Photoku extends Component {
-  render() {
-    return (
-      <Image source={{ uri: 'https://placeimg.com/100/100/tech/sepia' }} style={{ width: 100, height: 100 }}></Image>
-    );
-  }
+const NavBawahProfil = (props) => {
+  return (
+    <View style={{ flex: 1, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}>
+      <Image source={props.nav} style={{ height: 35, width: 35, borderRadius: 35 / 2 }}></Image>
+    </View>
+  )
 }
-
-// const style=StyleSheet.create({
-//   container:{
-//     flex:1,
-//     padding:10,
-//     margin:20,
-//   },
-//   tulisanku:{
-//     marginTop:15,
-//     paddingVertical:8,
-//     borderWidth:3,
-//     fontSize:20
-//   }
-// })
-
 export default App;
